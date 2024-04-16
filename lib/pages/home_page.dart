@@ -35,7 +35,10 @@ class _HomePageState extends State<HomePage> {
           builder: (context) {
             return IconButton(
               onPressed: (){Scaffold.of(context).openDrawer();},
-              icon: const Icon(Icons.menu, color: Colors.black)
+              icon: const Padding(
+                padding: EdgeInsets.only(left: 12.0),
+                child: Icon(Icons.menu, color: Colors.black),
+              )
               );
           }
         ),

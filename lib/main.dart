@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sneaker_store/models/cart.dart';
+import 'package:sneaker_store/pages/cataloge_page.dart';
+import 'package:sneaker_store/pages/home_page.dart';
 import 'package:sneaker_store/pages/intro_page.dart';
+import 'package:sneaker_store/pages/shoe_page.dart';
 
 void main() {
   runApp(
@@ -15,10 +18,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      
-      home: IntroPage(),  
+      routes: {
+        '/': (context) => IntroPage(),
+        '/home': (context) => HomePage(),
+        '/catalogue':(context) => CatalogePage(),
+        '/shoe':(context) => ShoePage(),
+      }, 
     );
   }
 }

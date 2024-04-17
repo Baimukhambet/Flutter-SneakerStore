@@ -31,7 +31,7 @@ const IntroPage({ Key? key }) : super(key: key);
             ), textAlign: TextAlign.center,),
             const SizedBox(height: 48),
             GestureDetector(
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage(),)),
+              onTap: () => Navigator.pushNamed(context, '/home'),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.grey[900],
@@ -43,7 +43,7 @@ const IntroPage({ Key? key }) : super(key: key);
                   fontSize: 16
                 )))
               ),
-            )
+            ),
           ],),
         ),
       )

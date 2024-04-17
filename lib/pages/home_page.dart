@@ -61,6 +61,14 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.home, color: Colors.white),
               title: Text("Home", style: TextStyle(color: Colors.white))),
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25.0),
+            child: ListTile(
+              onTap: () {
+                Navigator.popAndPushNamed(context, '/catalogue');},
+              leading: const Icon(Icons.store, color: Colors.white),
+              title: const Text("Catalogue", style: TextStyle(color: Colors.white))),
+          ),
           const Padding(
             padding: EdgeInsets.only(left: 25.0),
             child: ListTile(

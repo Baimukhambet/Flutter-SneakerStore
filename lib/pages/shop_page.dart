@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:sneaker_store/components/shoe_tile.dart';
 import 'package:sneaker_store/models/cart.dart';
@@ -42,27 +43,30 @@ class _ShopPageState extends State<ShopPage> {
         Padding(
           padding: EdgeInsets.all(28.0),
           child: 
-            Text('Everyone can run but not everyone uses this opportunity.',
+            Text('Find top sneakers in our shop!',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey[600]
             )),
         ),
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [ 
-            Text('Hot Picks',
+            const Text('Hot Picks',
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.bold
             )),
-            Text('See all', style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.blue
-            ))
+            GestureDetector(
+              onTap:() => Navigator.of(context).pushNamed('/catalogue'),
+              child: const Text('See all', style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.blue
+              )),
+            )
           ],),
         ),
         const SizedBox(height: 20),

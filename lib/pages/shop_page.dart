@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sneaker_store/components/shoe_tile.dart';
+import 'package:sneaker_store/models/cart.dart';
 import 'package:sneaker_store/models/shoe.dart';
 
 class ShopPage extends StatefulWidget {
@@ -11,15 +13,17 @@ class ShopPage extends StatefulWidget {
 
 class _ShopPageState extends State<ShopPage> {
 
-  final List<Shoe> shoes = [
-    Shoe(name: 'AIR JORDAN 1 RETRO HIGH OG', price: '\$99.99', description: 'Old School Jordans are always fire!', imagePath: 'lib/images/retro.jpg'),
-    Shoe(name: 'Air Jordan Classic', price: '\$99.99', description: 'Old School Jordans are always fire!', imagePath: 'lib/images/retro.jpg'),
-    Shoe(name: 'Air Jordan Classic', price: '\$99.99', description: 'Old School Jordans are always fire!', imagePath: 'lib/images/retro.jpg'),
-  ];
+  void _addShoeToCart(shoe) {
+    Provider.of<CartModel>(context, listen: false).addToCart(shoe);
+
+    showDialog(context: context, builder:(context) => AlertDialog(
+      title: Text('Added!', textAlign: TextAlign.center,),
+    ),);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Consumer<CartModel>(builder: (context, value, child) => Column(
       children: [ 
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 25),
@@ -67,14 +71,14 @@ class _ShopPageState extends State<ShopPage> {
           ListView.builder(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) { 
-            return ShoeTile(shoe: shoes[index],)
-            ;}, itemCount: shoes.length,)),
+            return ShoeTile(shoe: value.collection[index], onTap: () => _addShoeToCart(value.collection[index]),)
+            ;}, itemCount: value.collection.length,)),
         const Padding(
           padding: EdgeInsets.only(top: 25.0, left: 25.0, right: 25.0),
           child: Divider(color: Colors.white),
         )
       ],
       
-    );
+    ));
   }
 }

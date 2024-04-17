@@ -8,7 +8,7 @@ BottomNavBar({ super.key, required this.onTabChange });
   @override
   Widget build(BuildContext context){
     return Container(
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.only(left: 25, bottom: 25, right: 25, top: 12),
       child: GNav(
         color: Colors.grey[400],
         activeColor: Colors.grey.shade700,
